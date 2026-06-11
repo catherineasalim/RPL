@@ -113,10 +113,48 @@ if($action==='export_payments'){
   exit;
 }
 
-function layout_start($title){ global $page; $nav=[['dashboard','Overview','⌘'],['students','Murid','👤'],['classes','Kelas','▦'],['payments','Pembayaran','💳'],['payroll','Gaji Guru','◎'],['reports','Rapor','✦'],['finance','Keuangan','↗']];
+function layout_start($title){ 
+  global $page; 
+  $nav=[
+    [
+      'dashboard', 
+      'Overview', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>'
+    ],
+    [
+      'students', 
+      'Murid', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
+    ],
+    [
+      'classes', 
+      'Kelas', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>'
+    ],
+    [
+      'payments', 
+      'Pembayaran', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>'
+    ],
+    [
+      'payroll', 
+      'Gaji Guru', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>'
+    ],
+    [
+      'reports', 
+      'Rapor', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>'
+    ],
+    [
+      'finance', 
+      'Keuangan', 
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>'
+    ]
+  ];
 ?>
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?=e($title)?> · Five Dance School</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><div class="app"><aside class="sidebar"><div class="brand"><div class="logo">5</div><div><strong>Five Dance</strong><span>School Admin</span></div></div><nav><?php foreach($nav as $n): ?><a class="<?= $page===$n[0]?'active':'' ?>" href="?page=<?=$n[0]?>"><span><?=$n[2]?></span><?=$n[1]?></a><?php endforeach; ?></nav><a class="reset" href="?action=reset">Reset dummy data</a></aside><main><header class="topbar"><div><p class="eyebrow">Five Dance School</p><h1><?=e($title)?></h1></div></header>
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?=e($title)?> · Five Dance School</title><link rel="stylesheet" href="assets/style.css"><style>.sidebar nav a svg { margin-right: 12px; display: inline-block; vertical-align: middle; } .calendar-table { width: 100%; border-collapse: collapse; margin-top: 10px; } .calendar-table th, .calendar-table td { border: 1px solid #e2e8f0; padding: 10px; text-align: left; vertical-align: top; } .calendar-table th { background-color: #f8fafc; font-weight: 600; } .calendar-class-item { background: #f1f5f9; padding: 6px 10px; border-radius: 6px; margin-bottom: 6px; font-size: 0.9em; border-left: 4px solid #6b21a8; } .calendar-class-item p { margin: 2px 0 0 0; color: #475569; font-size: 0.85em; }</style></head>
+<body><div class="app"><aside class="sidebar"><div class="brand"><div class="logo">5</div><div><strong>Five Dance</strong><span>School Admin</span></div></div><nav><?php foreach($nav as $n): ?><a class="<?= $page===$n[0]?'active':'' ?>" href="?page=<?=$n[0]?>"><?=$n[2]?><?=htmlentities($n[1])?></a><?php endforeach; ?></nav><a class="reset" href="?action=reset">Reset dummy data</a></aside><main><header class="topbar"><div><p class="eyebrow">Five Dance School</p><h1><?=e($title)?></h1></div></header>
 <?php }
 function layout_end(){ echo '</main></div></body></html>'; }
 function card($title,$body,$sub=''){ echo '<section class="card"><div class="card-head"><div><h2>'.e($title).'</h2>'.($sub?'<p>'.e($sub).'</p>':'').'</div></div>'.$body.'</section>'; }
@@ -139,18 +177,66 @@ if($page==='students'){
  echo '<div class="page-actions"><a class="btn primary" href="?page=students&mode=new">+ Tambah Murid</a></div>';
  if($showForm){ ob_start(); ?>
  <form class="form" method="post"><input type="hidden" name="action" value="save_student"><input type="hidden" name="id" value="<?=e($edit['id']??'')?>">
- <div class="form-grid"><label>Nama Anak<input required name="name" value="<?=e($edit['name']??'')?>"></label><label>Usia<input required type="number" name="age" value="<?=e($edit['age']??'')?>"></label><label>Nama Orang Tua<input required name="parent" value="<?=e($edit['parent']??'')?>"></label><label>WhatsApp Orang Tua<input required pattern="08[0-9]{8,13}" name="wa" value="<?=e($edit['wa']??'')?>"></label><label>Kategori<select name="category"><option>Toddler</option><option <?=($edit['category']??'')==='Kids'?'selected':''?>>Kids</option><option <?=($edit['category']??'')==='Teens'?'selected':''?>>Teens</option></select></label><label>Status<select name="status"><option>Trial</option><option <?=($edit['status']??'')==='Aktif'?'selected':''?>>Aktif</option></select></label><label>Tanggal Trial<input type="date" name="trial_date" value="<?=e($edit['trial_date']??date('Y-m-d'))?>"></label><label>Level<input name="level" value="<?=e($edit['level']??'Beginner')?>"></label><label class="wide">Masukkan ke Kelas<select name="class_id"><option value="">Belum masuk kelas</option><?php foreach($_SESSION['classes'] as $c): ?><option value="<?=$c['id']?>" <?=($edit['class_id']??'')==$c['id']?'selected':''?>><?=e($c['name'].' · '.$c['category'].' · '.$c['day'].' '.$c['start'])?></option><?php endforeach; ?></select></label></div><div class="form-actions"><a class="btn" href="?page=students">Batal</a><button class="btn primary">Simpan Murid</button></div></form>
+ <div class="form-grid"><label>Nama Anak<input required name="name" value="<?=e($edit['name']??'')?>"></label><label>Usia<input required type="number" name="age" value="<?=e($edit['age']??'')?>"></label><label>Nama Orang Tua<input required name="parent" value="<?=e($edit['parent']??'')?>"></label><label>WhatsApp Orang Tua<input required pattern="08[0-9]{8,13}" name="wa" value="<?=e($edit['wa']??'')?>"></label><label>Kategori<select name="category"><option>Toddler</option><option <?=($edit['category']??'')==='Kids'?'selected':''?>>Kids</option><option <?=($edit['category']??'')==='Teens'?'selected':''?>>Teens</option></select></label><label>Status<select name="status"><option>Trial</option><option <?=($edit['status']??'')==='Aktif'?'selected':''?>>Aktif</option></select></label><label>Tanggal Trial<input type="date" name="trial_date" value="<?=e($edit['trial_date']??date('Y-m-d'))?>"></label><label>Level<input name="level" value="<?=e($edit['level']??'Beginner')?>"></label><label class="wide">Masukkan ke Kelas<select name="class_id"><option value="">Belum masuk kelas</option><?php foreach($_SESSION['classes'] as $c): ?><option value="<?=$c['id']?>" <?=($edit['class_id']??'')===$c['id']?'selected':''?>><?=e($c['name'].' · '.$c['category'].' · '.$c['day'].' '.$c['start'])?></option><?php endforeach; ?></select></label></div><div class="form-actions"><a class="btn" href="?page=students">Batal</a><button class="btn primary">Simpan Murid</button></div></form>
  <?php card($edit?'Edit Murid':'Tambah Murid',ob_get_clean(),'Murid langsung bisa dihubungkan ke jadwal kelas.'); }
  $rows=''; foreach($_SESSION['students'] as $s){ $c=class_by_id($s['class_id']??''); $rows.='<tr><td><strong>'.e($s['name']).'</strong><small>'.e($s['parent'].' · '.$s['wa']).'</small></td><td>'.e($s['category']).'</td><td>'.e($c['name']??'Belum kelas').'</td><td><span class="badge '.($s['status']==='Aktif'?'green':'purple').'">'.e($s['status']).'</span></td><td class="right"><a class="btn small" href="?page=students&edit='.$s['id'].'">Edit</a><form method="post" class="inline"><input type="hidden" name="action" value="delete_student"><input type="hidden" name="id" value="'.$s['id'].'"><button class="btn small danger">Hapus</button></form></td></tr>'; }
  card('Daftar Murid','<table><thead><tr><th>Murid</th><th>Kategori</th><th>Kelas</th><th>Status</th><th></th></tr></thead><tbody>'.$rows.'</tbody></table>'); layout_end(); exit;
 }
 
 if($page==='classes'){
- layout_start('Kelas'); $edit=null; if(isset($_GET['edit'])) $edit=class_by_id($_GET['edit']); $showForm=isset($_GET['mode'])||$edit; echo '<div class="page-actions"><a class="btn primary" href="?page=classes&mode=new">+ Buat Kelas</a></div>';
- if($showForm){ ob_start(); ?>
- <form class="form" method="post"><input type="hidden" name="action" value="save_class"><input type="hidden" name="id" value="<?=e($edit['id']??'')?>"><div class="form-grid"><label>Nama Kelas<input required name="name" value="<?=e($edit['name']??'')?>"></label><label>Hari<select name="day"><?php foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'] as $d): ?><option <?=($edit['day']??'')===$d?'selected':''?>><?=$d?></option><?php endforeach;?></select></label><label>Jam Mulai<input type="time" name="start" value="<?=e($edit['start']??'15:00')?>"></label><label>Durasi<select name="duration"><option value="1">1 jam</option><option value="1.5" <?=($edit['duration']??'')==1.5?'selected':''?>>1.5 jam</option><option value="2" <?=($edit['duration']??'')==2?'selected':''?>>2 jam</option></select></label><label>Kategori<select name="category"><option>Toddler</option><option <?=($edit['category']??'')==='Kids'?'selected':''?>>Kids</option><option <?=($edit['category']??'')==='Teens'?'selected':''?>>Teens</option></select></label><label>Studio<input name="studio" value="<?=e($edit['studio']??'Studio 1')?>"></label><label>Guru Utama<select name="teacher1"><?php foreach($_SESSION['teachers'] as $t): ?><option value="<?=$t['id']?>" <?=in_array($t['id'],$edit['teacher_ids']??[])?'selected':''?>><?=e($t['name'])?></option><?php endforeach;?></select></label><label>Guru Tambahan<select name="teacher2"><option value="">Tidak ada</option><?php foreach($_SESSION['teachers'] as $t): ?><option value="<?=$t['id']?>" <?=isset($edit)&&count($edit['teacher_ids'])>1&&$edit['teacher_ids'][1]==$t['id']?'selected':''?>><?=e($t['name'])?></option><?php endforeach;?></select></label></div><div class="form-actions"><a class="btn" href="?page=classes">Batal</a><button class="btn primary">Simpan Kelas</button></div></form>
- <?php card($edit?'Edit Kelas':'Buat Kelas',ob_get_clean(),'Kelas adalah pusat untuk murid, pembayaran, dan gaji.'); }
- echo '<div class="class-grid">'; foreach($_SESSION['classes'] as $c){ $cnt=count(students_in_class($c['id'])); $teachers=array_map(fn($id)=>teacher_by_id($id)['name']??'-',$c['teacher_ids']); echo '<section class="class-card"><div><span class="badge purple">'.e($c['category']).'</span><h2>'.e($c['name']).'</h2><p>'.e($c['day'].' · '.$c['start'].' · '.$c['studio']).'</p><p>Guru: '.e(implode(', ',$teachers)).'</p></div><div class="capacity"><strong>'.$cnt.'</strong><span>/ '.capacity($c['category']).' murid</span></div><div class="card-actions"><a class="btn small" href="?page=payments&class='.$c['id'].'">Lihat Murid & Bayar</a><a class="btn small" href="?page=classes&edit='.$c['id'].'">Edit</a></div></section>'; } echo '</div>'; layout_end(); exit;
+  layout_start('Kelas'); 
+  $edit=null; 
+  if(isset($_GET['edit'])) $edit=class_by_id($_GET['edit']); 
+  $showForm=isset($_GET['mode'])||$edit; 
+  
+  echo '<div class="page-actions"><a class="btn primary" href="?page=classes&mode=new">+ Buat Kelas</a></div>';
+  
+  if($showForm){ ob_start(); ?>
+  <form class="form" method="post"><input type="hidden" name="action" value="save_class"><input type="hidden" name="id" value="<?=e($edit['id']??'')?>"><div class="form-grid"><label>Nama Kelas<input required name="name" value="<?=e($edit['name']??'')?>"></label><label>Hari<select name="day"><?php foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'] as $d): ?><option <?=($edit['day']??'')===$d?'selected':''?>><?=$d?></option><?php endforeach;?></select></label><label>Jam Mulai<input type="time" name="start" value="<?=e($edit['start']??'15:00')?>"></label><label>Durasi<select name="duration"><option value="1">1 jam</option><option value="1.5" <?=($edit['duration']??'')==1.5?'selected':''?>>1.5 jam</option><option value="2" <?=($edit['duration']??'')==2?'selected':''?>>2 jam</option></select></label><label>Kategori<select name="category"><option>Toddler</option><option <?=($edit['category']??'')==='Kids'?'selected':''?>>Kids</option><option <?=($edit['category']??'')==='Teens'?'selected':''?>>Teens</option></select></label><label>Studio<input name="studio" value="<?=e($edit['studio']??'Studio 1')?>"></label><label>Guru Utama<select name="teacher1"><?php foreach($_SESSION['teachers'] as $t): ?><option value="<?=$t['id']?>" <?=in_array($t['id'],$edit['teacher_ids']??[])?'selected':''?>><?=e($t['name'])?></option><?php endforeach;?></select></label><label>Guru Tambahan<select name="teacher2"><option value="">Tidak ada</option><?php foreach($_SESSION['teachers'] as $t): ?><option value="<?=$t['id']?>" <?=isset($edit)&&count($edit['teacher_ids'])>1&&$edit['teacher_ids'][1]===$t['id']?'selected':''?>><?=e($t['name'])?></option><?php endforeach;?></select></label></div><div class="form-actions"><a class="btn" href="?page=classes">Batal</a><button class="btn primary">Simpan Kelas</button></div></form>
+  <?php card($edit?'Edit Kelas':'Buat Kelas',ob_get_clean(),'Kelas adalah pusat untuk murid, pembayaran, dan gaji.'); 
+  }
+
+  // Kalender Jadwal Mingguan
+  $days_order = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+  $calendar_html = '<table class="calendar-table"><thead><tr>';
+  foreach($days_order as $d) {
+    $calendar_html .= '<th>'.$d.'</th>';
+  }
+  $calendar_html .= '</tr></thead><tbody><tr>';
+  
+  foreach($days_order as $d) {
+    $calendar_html .= '<td>';
+    $classes_on_day = array_values(array_filter($_SESSION['classes'], fn($c) => $c['day'] === $d));
+    
+    // Sortir berdasarkan jam mulai
+    usort($classes_on_day, fn($a, $b) => strcmp($a['start'], $b['start']));
+    
+    foreach($classes_on_day as $c) {
+      $cnt = count(students_in_class($c['id']));
+      $teachers = array_map(fn($id)=>teacher_by_id($id)['name']??'-',$c['teacher_ids']);
+      $teachers_str = implode(', ', $teachers);
+      
+      $calendar_html .= '<div class="calendar-class-item">';
+      $calendar_html .= '<strong>'.e($c['name']).'</strong>';
+      $calendar_html .= '<p>'.$c['start'].' ('.$c['duration'].' jam) · '.$c['studio'].'</p>';
+      $calendar_html .= '<p>Guru: '.e($teachers_str).'</p>';
+      $calendar_html .= '<p>Murid: '.$cnt.' / '.capacity($c['category']).'</p>';
+      $calendar_html .= '</div>';
+    }
+    
+    if(empty($classes_on_day)) {
+      $calendar_html .= '<em class="muted" style="font-size:0.85em;">Tidak ada jadwal</em>';
+    }
+    
+    $calendar_html .= '</td>';
+  }
+  $calendar_html .= '</tr></tbody></table>';
+  
+  card('Kalender Jadwal Mingguan', $calendar_html);
+
+  // Daftar list/grid kelas seperti sebelumnya
+  echo '<br><h2>Daftar Kelas (Detail Pengaturan)</h2><div class="class-grid">'; 
+  foreach($_SESSION['classes'] as $c){ $cnt=count(students_in_class($c['id'])); $teachers=array_map(fn($id)=>teacher_by_id($id)['name']??'-',$c['teacher_ids']); echo '<section class="class-card"><div><span class="badge purple">'.e($c['category']).'</span><h2>'.e($c['name']).'</h2><p>'.e($c['day'].' · '.$c['start'].' · '.$c['studio']).'</p><p>Guru: '.e(implode(', ',$teachers)).'</p></div><div class="capacity"><strong>'.$cnt.'</strong><span>/ '.capacity($c['category']).' murid</span></div><div class="card-actions"><a class="btn small" href="?page=payments&class='.$c['id'].'">Lihat Murid & Bayar</a><a class="btn small" href="?page=classes&edit='.$c['id'].'">Edit</a></div></section>'; } echo '</div>'; layout_end(); exit;
 }
 
 if($page==='payments'){
@@ -159,7 +245,7 @@ if($page==='payments'){
  <form class="form compact" method="post"><input type="hidden" name="action" value="save_payment"><label>Murid<select name="student_id"><?php foreach($_SESSION['students'] as $s): ?><option value="<?=$s['id']?>"><?=e($s['name'].' · '.$s['category'])?></option><?php endforeach;?></select></label><label>Bulan<input type="month" name="month" value="<?=date('Y-m')?>"></label><label>Paket<select name="months_paid"><option value="1">1 bulan</option><option value="2">2 bulan - diskon <?=money(50000)?></option></select></label><label>Tanggal Bayar<input type="date" name="paid_date" value="<?=date('Y-m-d')?>"></label><button class="btn primary">Catat Lunas</button><a class="btn" href="?action=export_payments">Export Excel/CSV</a></form>
  <?php card('Catat Pembayaran',ob_get_clean(),'Setelah lunas, status murid otomatis menjadi Aktif.');
  echo '<div class="tabs"><a class="'.(!$selected?'active':'').'" href="?page=payments">Semua Kelas</a>'; foreach($_SESSION['classes'] as $c){ echo '<a class="'.($selected==$c['id']?'active':'').'" href="?page=payments&class='.$c['id'].'">'.e($c['name']).'</a>'; } echo '</div>';
- $classes=$selected?[class_by_id($selected)]:$_SESSION['classes']; foreach($classes as $c){ if(!$c) continue; $rows=''; foreach(students_in_class($c['id']) as $s){ $latest=null; foreach(array_reverse($_SESSION['payments']) as $p){ if($p['student_id']==$s['id']){$latest=$p;break;} } $total=$latest?tuition($s['category'])*$latest['months_paid']-$latest['discount']+late_fee($latest['paid_date']):tuition($s['category']); $rows.='<tr><td><strong>'.e($s['name']).'</strong><small>'.e($s['parent']).'</small></td><td>'.money(tuition($s['category'])).'</td><td>'.($latest?e($latest['paid_date']):'<span class="muted">Belum ada</span>').'</td><td>'.money($total).'</td><td><span class="badge '.($latest?'green':'red').'">'.($latest?'Lunas':'Belum Bayar').'</span></td></tr>'; } card($c['name'],'<table><thead><tr><th>Murid</th><th>SPP</th><th>Bayar Terakhir</th><th>Total</th><th>Status</th></tr></thead><tbody>'.$rows.'</tbody></table>', $c['category'].' · '.$c['day'].' '.$c['start']); }
+ $classes=$selected?[class_by_id($selected)]:$_SESSION['classes']; foreach($classes as $c){ if(!$c) continue; $rows=''; foreach(students_in_class($c['id']) as $s){ $latest=null; foreach(array_reverse($_SESSION['payments']) as $p){ if($p['student_id']===$s['id']){$latest=$p;break;} } $total=$latest?tuition($s['category'])*$latest['months_paid']-$latest['discount']+late_fee($latest['paid_date']):tuition($s['category']); $rows.='<tr><td><strong>'.e($s['name']).'</strong><small>'.e($s['parent']).'</small></td><td>'.money(tuition($s['category'])).'</td><td>'.($latest?e($latest['paid_date']):'<span class="muted">Belum ada</span>').'</td><td>'.money($total).'</td><td><span class="badge '.($latest?'green':'red').'">'.($latest?'Lunas':'Belum Bayar').'</span></td></tr>'; } card($c['name'],'<table><thead><tr><th>Murid</th><th>SPP</th><th>Bayar Terakhir</th><th>Total</th><th>Status</th></tr></thead><tbody>'.$rows.'</tbody></table>', $c['category'].' · '.$c['day'].' '.$c['start']); }
  layout_end(); exit;
 }
 
