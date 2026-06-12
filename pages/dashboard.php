@@ -10,7 +10,6 @@ $expense = array_sum(array_column($_SESSION['expenses'], 'amount'));
 
 echo '<div class="hero">
     <div>
-        <p>Operational cockpit</p>
         <h2>Kelola murid, kelas, pembayaran, dan gaji dari alur yang lebih sederhana.</h2>
     </div>
     <a class="btn primary" href="?page=students&mode=new">+ Tambah Murid</a>

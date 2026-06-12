@@ -78,16 +78,9 @@
         <div class="rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
         <div class="panel-brand"><div class="logo-mark">5</div><span>Five Dance School</span></div>
         <div class="panel-copy">
-            <p class="eyebrow">Admin Dashboard</p>
-            <h2>Satu dasbor,<br>semua <em>alur kerja</em>.</h2>
-            <p>Kelola murid, jadwal kelas, rekap absensi, dan slip gaji instruktur — dari satu tempat yang rapi.</p>
-            <div class="feature-list">
-                <div class="feature-item"><div class="feature-dot"></div>Manajemen murid &amp; status trial</div>
-                <div class="feature-item"><div class="feature-dot"></div>Kalender jadwal mingguan</div>
-                <div class="feature-item"><div class="feature-dot"></div>Rekap pembayaran &amp; denda otomatis</div>
-                <div class="feature-item"><div class="feature-dot"></div>Slip gaji guru berbasis kehadiran</div>
-                <div class="feature-item"><div class="feature-dot"></div>Rapor perkembangan murid</div>
-            </div>
+            <p class="eyebrow">Welcome Back</p>
+            <h2>Admin<br><em>Dashboard</em></h2>
+            <p>Pusat kendali operasional Five Dance School. Kelola jadwal kelas, administrasi murid, dan laporan keuangan dengan mudah dan terorganisir.</p>
         </div>
         <div class="panel-footer">&copy; 2026 Five Dance School. All rights reserved.</div>
     </div>
@@ -95,11 +88,11 @@
     <div class="login-form-side">
         <div class="form-box">
             <div class="form-box-header">
-                <h1>Selamat datang</h1>
-                <p>Masuk dengan akun admin untuk mengakses dasbor.</p>
+                <h1>Selamat datang!</h1>
+                <p>Masuk dengan akun admin untuk mengakses dashboard.</p>
             </div>
 
-            <?php if ($login_error): ?>
+            <?php if (isset($login_error) && $login_error): ?>
                 <div class="error-banner">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                     <span><?= e($login_error) ?></span>
@@ -124,9 +117,9 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn-login">Masuk ke Dashboard &rarr;</button>
+                <button type="submit" class="btn-login">Login</button>
             </form>
-            <p class="form-hint">Demo: admin / admin123</p>
+            <p class="form-hint">Credentials: admin / admin123</p>
         </div>
     </div>
 </div>

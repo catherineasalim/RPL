@@ -44,7 +44,7 @@ foreach ($classes as $c) {
     foreach (students_in_class($c['id']) as $s) {
         $latest = null;
         foreach (array_reverse($_SESSION['payments']) as $p) {
-            if ($p['student_id'] === $s['id']) { $latest = $p; break; }
+            if ($p['student_id'] == $s['id']) { $latest = $p; break; }
         }
         $total  = $latest
             ? tuition($s['category']) * $latest['months_paid'] - $latest['discount'] + late_fee($latest['paid_date'])
